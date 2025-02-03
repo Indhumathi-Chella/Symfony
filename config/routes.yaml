@@ -3,3 +3,20 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+
+
+user_form:
+    path: /user/new
+    controller: App\Controller\UserController::new
+
+user_success:
+    path: /user/success
+    controller: App\Controller\UserController::success
+
+favicon:
+    path: /favicon.ico
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /favicon.ico
+        permanent: true
