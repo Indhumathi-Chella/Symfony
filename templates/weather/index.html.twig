@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Weather Information{% endblock %}
+
+{% block head %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+
+        .alert {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f8d7da;
+            color: #721c24;
+            text-align: center;
+        }
+
+        .weather-info {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        .weather-info p {
+            margin: 5px 0;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Weather in {{ city }}</h1>
+
+        {% if errorMessage %}
+            <div class="alert">{{ errorMessage }}</div>
+        {% elseif temperature is not null %}
+            <div class="weather-info">
+                <p>Temperature: {{ temperature }}°C</p>
+                <p>Condition: {{ condition }}</p>
+            </div>
+        {% else %}
+            <p>No weather data available.</p>
+        {% endif %}
+    </div>
+{% endblock %}

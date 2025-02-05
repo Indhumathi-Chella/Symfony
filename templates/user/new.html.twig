@@ -2,17 +2,41 @@
 
 {% block title %}User Form{% endblock %}
 {% block head %}
-    <link rel="stylesheet" href="{{ asset('css/new.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/new.css') }}">
 {% endblock %}
 
 {% block body %}
     <h1>Submit Your Information</h1>
 
+    {% if app.flashes('success') %}
+        <div class="message success">
+            {{ app.flashes('success')[0] }}
+        </div>
+    {% elseif app.flashes('error') %}
+        <div class="message error">
+            {{ app.flashes('error')[0] }}
+        </div>
+    {% endif %}
+
     {% if form is not empty %}
         {{ form_start(form) }}
-            {{ form_row(form.name) }}
-            {{ form_row(form.email) }}
-            {{ form_row(form.submit) }}
+        
+        <div class="form-group">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+        </div>
+        
+        <div class="form-group">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email) }}
+            {{ form_errors(form.email) }}
+        </div>
+        
+        <div class="form-group">
+            {{ form_widget(form.submit) }}
+        </div>
+        
         {{ form_end(form) }}
     {% else %}
         <p>Form is empty!</p>

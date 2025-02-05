@@ -20,3 +20,18 @@ favicon:
     defaults:
         path: /favicon.ico
         permanent: true
+# config/routes.yaml
+notify:
+    path: /notify
+    controller: App\Controller\NotificationController::notify
+
+
+# config/routes.yaml
+weather_index:
+    path: /weather
+    controller: App\Controller\WeatherController::index
+# config/routes.yaml
+hello_bundle:
+    path: /hello-bundle
+    controller: App\MyCustomBundle\Controller\HelloController::index
+
