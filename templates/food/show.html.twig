@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Favorite Food{% endblock %}
+
+{% block head %}
+<style>
+.flash-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    position: relative;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+    {# Flash message display #}
+    {% for message in app.flashes('success') %}
+        <div class="flash-success">{{ message }}</div>
+    {% endfor %}
+
+    <h1>Your Favorite Food</h1>
+    <p>Your favorite food is: <strong>{{ food }}</strong></p>
+    
+    <form action="{{ path('store_favorite_food') }}" method="POST">
+        <input type="text" name="food" placeholder="Enter your favorite food" required />
+        <button type="submit">Save Food</button>
+    </form>
+{% endblock %}

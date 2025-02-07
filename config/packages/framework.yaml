@@ -2,14 +2,25 @@
 framework:
     secret: '%env(APP_SECRET)%'
 
+    session:
+        enabled: true
+        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+        cookie_lifetime: 3600  # 1 hour lifetime for the session cookie
+        handler_id: Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
+        storage_factory_id: session.storage.factory.native
+        cookie_secure: auto
+
     # Note that the session will be started ONLY if you read or write from it.
-    session: true
+    # session: true
 
     #esi: true
     #fragments: true
+
+
 
 when@test:
     framework:
         test: true
         session:
             storage_factory_id: session.storage.factory.mock_file
+

@@ -3,12 +3,14 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
-
-
+kernel:
+    resource: App\Kernel
+    type: attribute
 
 user_form:
     path: /user/new
     controller: App\Controller\UserController::new
+
 
 user_success:
     path: /user/success
@@ -35,3 +37,21 @@ hello_bundle:
     path: /hello-bundle
     controller: App\MyCustomBundle\Controller\HelloController::index
 
+
+# config/routes.yaml
+student_index:
+    path: /students
+    controller: App\Controller\StudentController::index
+
+student_create:
+    path: /students/create
+    controller: App\Controller\StudentController::create
+
+# config/routes.yaml
+store_favorite_food:
+    path: /store-food
+    controller: App\Controller\FoodController::storeFavoriteFood
+
+show_favorite_food:
+    path: /favorite-food
+    controller: App\Controller\FoodController::showFavoriteFood
